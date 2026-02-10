@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentine</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      text-align: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #d10068;
+      margin-bottom: 30px;
+      padding: 10px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #555;
+      color: white;
+    }
+
+    /* Optional image/GIF styling */
+    .media {
+      margin-bottom: 20px;
+      max-width: 80vw;
+      max-height: 40vh;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- OPTIONAL: Add Photo or GIF -->
+  <!-- Replace src with your image or GIF link -->
+  <!-- Example: src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" -->
+  <img class="media" src="" alt="" id="mediaElement" style="display:none;" />
+
+  <h1>Priscilla, Will you be my Valentine? ❤️</h1>
+
+  <div class="buttons">
+    <button id="yesBtn">YES</button>
+    <button id="noBtn">NO</button>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    let yesScale = 1;
+    let noScale = 1;
+    let index = 0;
+
+    const convincingTexts = [
+      "Are you sure?",
+      "Think again ❤️",
+      "Pretty please? 🥺",
+      "You might regret NO 😢",
+      "Last chance!",
+      "I will be really happy 💖",
+      "Say YES maybe?",
+      "You know you want to 😌",
+      "YES is the right answer 😉",
+      "Come onnnnn ❤️"
+    ];
+
+    noBtn.addEventListener("click", () => {
+      yesScale *= 1.25;
+      noScale /= 1.15;
+
+      yesBtn.style.transform = `scale(${yesScale})`;
+      noBtn.style.transform = `scale(${noScale})`;
+
+      if (index < convincingTexts.length) {
+        yesBtn.textContent = convincingTexts[index];
+        index++;
+      }
+
+      if (noScale < 0.2) {
+        noBtn.style.display = "none";
+      }
+    });
+
+    yesBtn.addEventListener("click", () => {
+      document.body.innerHTML = "<h1>I knew you would say yes!!!! ❤️❤️❤️❤️❤️</h1>";
+    });
+  </script>
+
+</body>
+</html>
