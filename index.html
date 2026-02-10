@@ -50,7 +50,6 @@
       color: white;
     }
 
-    /* Optional image/GIF styling */
     .media {
       margin-bottom: 20px;
       max-width: 80vw;
@@ -61,10 +60,9 @@
 
 <body>
 
-  <!-- OPTIONAL: Add Photo or GIF -->
-  <!-- Replace src with your image or GIF link -->
-  <!-- Example: src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" -->
-  <img class="media" src="" alt="" id="mediaElement" style="display:none;" />
+  <!-- ===== GIF 1: Initial GIF (Before any click) ===== -->
+  <!-- Replace with your starting cute GIF -->
+  <img class="media" id="mainGif" src="Cat Love GIF by Castaways.gif" />
 
   <h1>Priscilla, Will you be my Valentine? ❤️</h1>
 
@@ -76,10 +74,17 @@
   <script>
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
+    const mainGif = document.getElementById("mainGif");
 
     let yesScale = 1;
     let noScale = 1;
     let index = 0;
+
+    // ===== GIF 2: Show when NO is clicked =====
+    const noGif = "angry_face.png";
+
+    // ===== GIF 3: Show when YES is clicked =====
+    const yesGif = "Happy Dance GIF.gif";
 
     const convincingTexts = [
       "Are you sure?",
@@ -95,6 +100,9 @@
     ];
 
     noBtn.addEventListener("click", () => {
+      // Change GIF when NO is clicked
+      mainGif.src = noGif;
+
       yesScale *= 1.25;
       noScale /= 1.15;
 
@@ -112,7 +120,10 @@
     });
 
     yesBtn.addEventListener("click", () => {
-      document.body.innerHTML = "<h1>I knew you would say yes!!!! ❤️❤️❤️❤️❤️</h1>";
+      document.body.innerHTML = `
+        <img src="${yesGif}" style="max-width:80vw; margin-bottom:20px;" />
+        <h1>I knew you would say yes!!!! ❤️❤️❤️❤️❤️</h1>
+      `;
     });
   </script>
 
