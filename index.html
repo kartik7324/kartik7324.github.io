@@ -38,6 +38,12 @@
       border-radius: 12px;
       cursor: pointer;
       transition: all 0.3s ease;
+      outline: none;
+    }
+
+    button:focus {
+      outline: none;
+      box-shadow: none;
     }
 
     #yesBtn {
@@ -62,7 +68,7 @@
 
   <!-- ===== GIF 1: Initial GIF (Before any click) ===== -->
   <!-- Replace with your starting cute GIF -->
-  <img class="media" id="mainGif" src="Cat Love GIF by Castaways.gif" />
+  <img class="media" id="mainGif" src="INITIAL_GIF_LINK_HERE" />
 
   <h1>Priscilla, Will you be my Valentine? ❤️</h1>
 
@@ -81,10 +87,10 @@
     let index = 0;
 
     // ===== GIF 2: Show when NO is clicked =====
-    const noGif = "angry_face.png";
+    const noGif = "NO_CLICK_GIF_LINK_HERE";
 
     // ===== GIF 3: Show when YES is clicked =====
-    const yesGif = "Happy Dance GIF.gif";
+    const yesGif = "YES_CLICK_GIF_LINK_HERE";
 
     const convincingTexts = [
       "Are you sure?",
@@ -96,8 +102,7 @@
       "Say YES maybe?",
       "You know you want to 😌",
       "YES is the right answer 😉",
-      "Pichku plss ❤️",
-      "SHMUUU"
+      "Come onnnnn ❤️"
     ];
 
     noBtn.addEventListener("click", () => {
@@ -121,6 +126,11 @@
     });
 
     yesBtn.addEventListener("click", () => {
+      // Hide buttons immediately
+      document.querySelector(".buttons").style.display = "none";
+      yesBtn.blur();
+
+      // Replace page content
       document.body.innerHTML = `
         <img src="${yesGif}" style="max-width:80vw; margin-bottom:20px;" />
         <h1>I knew you would say yes!!!! ❤️❤️❤️❤️❤️</h1>
